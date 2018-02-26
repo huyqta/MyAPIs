@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  myapis:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
