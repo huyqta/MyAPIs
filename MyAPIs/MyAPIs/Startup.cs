@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EntityModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using Pomelo.EntityFrameworkCore.MySql;
 
 namespace MyAPIs
 {
@@ -16,6 +19,9 @@ namespace MyAPIs
     {
         public Startup(IConfiguration configuration)
         {
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            configuration = builder.Build();
             Configuration = configuration;
         }
 
@@ -24,6 +30,8 @@ namespace MyAPIs
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<GeneralContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddMvc();
 
             services.AddSwaggerGen(c =>
