@@ -1,10 +1,8 @@
 ﻿using HQ.Entity;
 using HQ.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace MyAPIs.Controllers
 {
@@ -12,6 +10,7 @@ namespace MyAPIs.Controllers
     public class UserController : ControllerBase
     {
         private readonly ICoreService<User> _coreService;
+        public IConfiguration Configuration { get; }
 
         public UserController(ICoreService<User> coreService)
         {
@@ -56,6 +55,18 @@ namespace MyAPIs.Controllers
         {
             var res = _coreService.Delete(id);
             return Ok(res);
+        }
+
+        [HttpGet]
+        [Route("api/users/createdb/{id}")]
+        public ActionResult Users(string id)
+        {
+            var username = _coreService.Get(id);
+            var dbname = username.Username;
+            var password = username.DatabasePassword;
+            
+            MySqlConnection conn = new MySqlConnection(Configuration.GetConnectionString("DefaultConnection"));
+            return Ok(totalItems);
         }
     }
 }
