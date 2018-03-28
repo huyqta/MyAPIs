@@ -6,17 +6,13 @@ using System.Text;
 
 namespace HQ.Entity
 {
-    public class Category
+    public class Category : BaseEntity
     {
-        public Category()
-        {
-        }
-
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
 
-        public int ParentId { get; set; }
+        public string ParentId { get; set; }
 
         public string Description { get; set; }
 
@@ -24,9 +20,9 @@ namespace HQ.Entity
 
         public DateTime DateCRT { get; set; }
 
-        [ForeignKey("ParentId")]
-        public Category Parent { get; set; }
+        //[ForeignKey("ParentId")]
+        //public Category Parent { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        //public ICollection<Category> Categories { get; set; }
     }
 }

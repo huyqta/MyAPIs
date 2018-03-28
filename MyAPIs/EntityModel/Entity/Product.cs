@@ -13,7 +13,7 @@ namespace HQ.Entity
 
         public int Id { get; set; }
 
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; }
 
         public string Name { get; set; }
 
@@ -27,7 +27,7 @@ namespace HQ.Entity
 
         public DateTime DateCRT { get; set; }
 
-        [ForeignKey("CategoryId")]
-        public Category Category { get; set; }
+        //[ForeignKey("CategoryId")]
+        //public Category Category { get; set; }
     }
 }

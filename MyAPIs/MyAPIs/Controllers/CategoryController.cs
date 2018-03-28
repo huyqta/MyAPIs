@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using HQ.Entity;
 using HQ.Service;
+using HQ.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StackExchange.Redis;
@@ -14,70 +15,51 @@ namespace MyAPIs.Controllers
     [Route("api/v1/[controller]")]
     public class CategoryController : ControllerBase
     {
-        private readonly EFDbContext _context;
+        private readonly ICoreService<Category> _coreService;
 
-        public CategoryController(EFDbContext context)
+        public CategoryController(ICoreService<Category> coreService)
         {
-            _context = context;
+            this._coreService = coreService;
         }
 
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> Categories()
+        public ActionResult Categories()
         {
-            var totalItems = await _context.Category.ToListAsync();
+            var totalItems = _coreService.GetAll();
             return Ok(totalItems);
         }
 
         [HttpGet]
-        [Route("api/categories/{id:int:min(11)}")]
-        public IActionResult FindCategoryByID(int id)
+        [Route("api/categories/{id}")]
+        public ActionResult GetCategoryById(string id)
         {
-            var category = _context.Category.Where(cat => cat.Id == id).FirstOrDefault();
-            return Ok(category);
-        }
-
-        //[HttpGet]
-        //[Route("api/categories")]
-        //public async Task<IActionResult> GetAllCategories()
-        //{
-        //    var totalItems = await _context.Category.ToListAsync();
-        //    return Ok(totalItems);
-        //}
-
-        [HttpDelete]
-        [Route("api/categories/{id:int}")]
-        public IActionResult DeleteCategory(int id)
-        {
-            var category = _context.Category.Where(cat => cat.Id == id).FirstOrDefault();
-            _context.Category.Remove(category);
-            var result = _context.SaveChanges();
-            return Ok(result);
-        }
-
-        [HttpPut]
-        [Route("api/categories/{id:int}")]
-        public IActionResult UpdateExistingCategory(int id, Category category)
-        {
-            var categoryToUpdate = _context.Category.Where(cat => cat.Id == id).FirstOrDefault();
-            categoryToUpdate.Name = category.Name;
-            categoryToUpdate.ParentId = category.ParentId;
-            categoryToUpdate.ImageUrl = category.ImageUrl;
-            categoryToUpdate.Description = category.Description;
-            _context.Category.Attach(categoryToUpdate);
-            _context.Category.Update(categoryToUpdate);
-            var result = _context.SaveChanges();
-            return Ok(result);
+            var totalItems = _coreService.Get(id);
+            return Ok(totalItems);
         }
 
         [HttpPost]
         [Route("api/categories/")]
-        public IActionResult CreateCategory(Category category)
+        public ActionResult CreateCategory(Category category)
         {
-            _context.Category.Attach(category);
-            _context.Category.Update(category);
-            var result = _context.SaveChanges();
-            return Ok(result);
+            var res = _coreService.Insert(category);
+            return Ok(res);
+        }
+
+        [HttpPut]
+        [Route("api/categories/")]
+        public ActionResult UpdateCategory(Category category)
+        {
+            var res = _coreService.Update(category);
+            return Ok(res);
+        }
+
+        [HttpDelete]
+        [Route("api/categories/{id}")]
+        public ActionResult DeleteCategory(string id)
+        {
+            var res = _coreService.Delete(id);
+            return Ok(res);
         }
     }
 }

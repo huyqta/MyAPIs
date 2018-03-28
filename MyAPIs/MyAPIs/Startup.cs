@@ -27,7 +27,10 @@ namespace MyAPIs
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EFDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddScoped<ICoreService<User>, CoreService<User>>();
+            services.AddScoped<ICoreService<Category>, CoreService<Category>>();
+
             services.AddMvc();
 
             services.AddSwaggerGen(c =>
