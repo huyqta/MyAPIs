@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EntityModel.Entity
+namespace HQ.Entity
 {
-    class BaseEntity
+    public class BaseEntity
     {
-        public DateTime CreatedDate { get; set; }
+        public string Id { get; set; }
     }
 }

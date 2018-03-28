@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EntityModel.Entity
+namespace HQ.Entity
 {
     public class Subject
     {

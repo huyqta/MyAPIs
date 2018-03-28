@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using HQ.Entity;
+using HQ.Service.Interfaces;
+
+namespace HQ.Service.Interfaces
+{
+    public interface ICoreService<TEntity> where TEntity : BaseEntity
+    {
+        IEnumerable<TEntity> GetAll();
+        TEntity Get(string id);
+        TEntity Insert(TEntity entity);
+        TEntity Update(TEntity entity);
+        bool Delete(string id);
+    }
+}

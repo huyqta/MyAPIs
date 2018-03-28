@@ -3,7 +3,7 @@ using System;
 using MySql.Data.EntityFrameworkCore;
 using MySQL.Data.EntityFrameworkCore.Extensions;
 using System.ComponentModel.DataAnnotations;
-using EntityModel.Entity;
+using HQ.Entity;
 
 namespace EntityModel
 {

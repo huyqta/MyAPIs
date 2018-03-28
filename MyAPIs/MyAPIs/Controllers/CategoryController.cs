@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using EntityModel;
-using EntityModel.Entity;
+using HQ.Entity;
+using HQ.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StackExchange.Redis;
@@ -14,9 +14,9 @@ namespace MyAPIs.Controllers
     [Route("api/v1/[controller]")]
     public class CategoryController : ControllerBase
     {
-        private readonly GeneralContext _context;
+        private readonly EFDbContext _context;
 
-        public CategoryController(GeneralContext context)
+        public CategoryController(EFDbContext context)
         {
             _context = context;
         }
