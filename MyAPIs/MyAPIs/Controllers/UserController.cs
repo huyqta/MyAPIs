@@ -2,6 +2,7 @@
 using HQ.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using MyAPIs.Helpers;
 using MySql.Data.MySqlClient;
 
 namespace MyAPIs.Controllers
@@ -10,11 +11,12 @@ namespace MyAPIs.Controllers
     public class UserController : ControllerBase
     {
         private readonly ICoreService<User> _coreService;
-        public IConfiguration Configuration { get; }
+        public IConfiguration _configuration;
 
-        public UserController(ICoreService<User> coreService)
+        public UserController(ICoreService<User> coreService, IConfiguration Configuration)
         {
             this._coreService = coreService;
+            this._configuration = Configuration;
         }
 
         [HttpGet]
@@ -62,11 +64,17 @@ namespace MyAPIs.Controllers
         public ActionResult Users(string id)
         {
             var username = _coreService.Get(id);
-            var dbname = username.Username;
+            var dbname = "db_" + username.Username;
             var password = username.DatabasePassword;
             
-            MySqlConnection conn = new MySqlConnection(Configuration.GetConnectionString("DefaultConnection"));
-            return Ok(totalItems);
+            var conn = new MySqlConnection(this._configuration.GetConnectionString("DefaultConnection").ToString());
+            conn.Open();
+            var command = new MySqlCommand();
+            command.CommandText = string.Format(MySqlHelpers.CREATE_DATABASE, dbname);
+            command.Connection = conn;
+            var result = command.ExecuteNonQuery();
+            conn.Close();
+            return Ok(result + " - " + dbname);
         }
     }
 }
