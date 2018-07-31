@@ -27,13 +27,13 @@ namespace MyAPIs.Controllers
             return Ok(totalItems);
         }
 
-        [HttpGet]
-        [Route("api/users/{id}")]
-        public ActionResult GetUserById(string id)
-        {
-            var totalItems = _coreService.Get(id);
-            return Ok(totalItems);
-        }
+        //[HttpGet]
+        //[Route("api/users/{id}")]
+        //public ActionResult GetUserById(string id)
+        //{
+        //    var totalItems = _coreService.Get(id);
+        //    return Ok(totalItems);
+        //}
 
         [HttpPost]
         [Route("api/users/")]
@@ -51,30 +51,30 @@ namespace MyAPIs.Controllers
             return Ok(res);
         }
 
-        [HttpDelete]
-        [Route("api/users/{id}")]
-        public ActionResult DeleteUser(string id)
-        {
-            var res = _coreService.Delete(id);
-            return Ok(res);
-        }
+        //[HttpDelete]
+        //[Route("api/users/{id}")]
+        //public ActionResult DeleteUser(string id)
+        //{
+        //    var res = _coreService.Delete(id);
+        //    return Ok(res);
+        //}
 
-        [HttpGet]
-        [Route("api/users/createdb/{id}")]
-        public ActionResult Users(string id)
-        {
-            var username = _coreService.Get(id);
-            var dbname = "db_" + username.Username;
-            var password = username.DatabasePassword;
+        //[HttpGet]
+        //[Route("api/users/createdb/{id}")]
+        //public ActionResult Users(string id)
+        //{
+        //    var username = _coreService.Get(id);
+        //    var dbname = "db_" + username.Username;
+        //    var password = username.DatabasePassword;
             
-            var conn = new MySqlConnection(this._configuration.GetConnectionString("DefaultConnection").ToString());
-            conn.Open();
-            var command = new MySqlCommand();
-            command.CommandText = string.Format(MySqlHelpers.CREATE_DATABASE, dbname);
-            command.Connection = conn;
-            var result = command.ExecuteNonQuery();
-            conn.Close();
-            return Ok(result + " - " + dbname);
-        }
+        //    var conn = new MySqlConnection(this._configuration.GetConnectionString("DefaultConnection").ToString());
+        //    conn.Open();
+        //    var command = new MySqlCommand();
+        //    command.CommandText = string.Format(MySqlHelpers.CREATE_DATABASE, dbname);
+        //    command.Connection = conn;
+        //    var result = command.ExecuteNonQuery();
+        //    conn.Close();
+        //    return Ok(result + " - " + dbname);
+        //}
     }
 }

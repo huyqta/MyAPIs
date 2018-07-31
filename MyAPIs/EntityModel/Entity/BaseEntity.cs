@@ -6,6 +6,6 @@ namespace HQ.Entity
 {
     public class BaseEntity
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
     }
 }

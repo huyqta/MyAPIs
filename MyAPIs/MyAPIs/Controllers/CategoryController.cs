@@ -16,6 +16,7 @@ namespace MyAPIs.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ICoreService<Category> _coreService;
+        private readonly EFDbContext _context;
 
         public CategoryController(ICoreService<Category> coreService)
         {
@@ -32,7 +33,7 @@ namespace MyAPIs.Controllers
 
         [HttpGet]
         [Route("api/categories/{id}")]
-        public ActionResult GetCategoryById(string id)
+        public ActionResult GetCategoryById(int id)
         {
             var totalItems = _coreService.Get(id);
             return Ok(totalItems);
@@ -56,7 +57,7 @@ namespace MyAPIs.Controllers
 
         [HttpDelete]
         [Route("api/categories/{id}")]
-        public ActionResult DeleteCategory(string id)
+        public ActionResult DeleteCategory(int id)
         {
             var res = _coreService.Delete(id);
             return Ok(res);

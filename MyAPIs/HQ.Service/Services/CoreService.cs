@@ -24,7 +24,7 @@ namespace HQ.Service.Services
             entities = this._context.Set<TEntity>();
         }
 
-        public bool Delete(string id)
+        public bool Delete(int id)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace HQ.Service.Services
             }
         }
 
-        public TEntity Get(string id)
+        public TEntity Get(int id)
         {
             return entities.SingleOrDefault(s => s.Id == id);
         }
