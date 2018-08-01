@@ -62,5 +62,26 @@ namespace MyAPIs.Controllers
             var res = _coreService.Delete(id);
             return Ok(res);
         }
+
+        /// <summary>
+        /// option: 0 or 1
+        /// Usage: 
+        /// Declare: var years = GetStartEndYear(0);
+        /// Start year: years[0];
+        /// End year: years[1];
+        /// </summary>
+        /// <param name="option"></param>
+        /// <returns></returns>
+        private List<int> GetStartEndYear(int option)
+        {
+            switch (option)
+            {
+                case 0:
+                    return new List<int>() { DateTime.Now.Year - 1, DateTime.Now.Year + 2 };
+                case 1:
+                    return new List<int>() { DateTime.Now.Year, DateTime.Now.Year - 1 };
+            }
+            return null;
+        }
     }
 }
