@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace HQ.Service.Services
 {
@@ -34,7 +35,7 @@ namespace HQ.Service.Services
                 {
                     throw new ArgumentNullException("entity");
                 }
-                
+
                 entities.Remove(entity);
                 this._context.SaveChanges();
                 return true;
@@ -53,6 +54,11 @@ namespace HQ.Service.Services
         public IEnumerable<TEntity> GetAll()
         {
             return entities.AsEnumerable();
+        }
+
+        public Task<IEnumerable<TEntity>> GetAllAsync()
+        {
+            return Task.FromResult(entities.AsEnumerable());
         }
 
         public TEntity Insert(TEntity entity)

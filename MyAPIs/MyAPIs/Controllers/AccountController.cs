@@ -8,12 +8,12 @@ using MySql.Data.MySqlClient;
 namespace MyAPIs.Controllers
 {
     [Route("api/v1/[controller]")]
-    public class UserController : ControllerBase
+    public class AccountController : ControllerBase
     {
-        private readonly ICoreService<User> _coreService;
+        private readonly ICoreService<Account> _coreService;
         public IConfiguration _configuration;
 
-        public UserController(ICoreService<User> coreService, IConfiguration Configuration)
+        public AccountController(ICoreService<Account> coreService, IConfiguration Configuration)
         {
             this._coreService = coreService;
             this._configuration = Configuration;
@@ -21,31 +21,31 @@ namespace MyAPIs.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public ActionResult Users()
+        public ActionResult Accounts()
         {
             var totalItems = _coreService.GetAll();
             return Ok(totalItems);
         }
 
-        //[HttpGet]
-        //[Route("api/users/{id}")]
-        //public ActionResult GetUserById(string id)
-        //{
-        //    var totalItems = _coreService.Get(id);
-        //    return Ok(totalItems);
-        //}
+        [HttpGet]
+        [Route("api/users/{id}")]
+        public ActionResult GetById(int id)
+        {
+            var totalItems = _coreService.Get(id);
+            return Ok(totalItems);
+        }
 
         [HttpPost]
-        [Route("api/users/")]
-        public ActionResult CreateUser(User user)
+        [Route("api/accounts/")]
+        public ActionResult Create(Account user)
         {
             var res = _coreService.Insert(user);
             return Ok(res);
         }
 
         [HttpPut]
-        [Route("api/users/")]
-        public ActionResult UpdateUser(User user)
+        [Route("api/accounts/")]
+        public ActionResult Update(Account user)
         {
             var res = _coreService.Update(user);
             return Ok(res);

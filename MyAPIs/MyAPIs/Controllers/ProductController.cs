@@ -13,50 +13,50 @@ using StackExchange.Redis;
 namespace MyAPIs.Controllers
 {
     [Route("api/v1/[controller]")]
-    public class CategoryController : ControllerBase
+    public class ProductController : ControllerBase
     {
-        private readonly ICoreService<Category> _coreService;
+        private readonly ICoreService<Product> _coreService;
 
-        public CategoryController(ICoreService<Category> coreService)
+        public ProductController(ICoreService<Product> coreService)
         {
             this._coreService = coreService;
         }
 
         [HttpGet]
         [Route("[action]")]
-        public ActionResult Categories()
+        public async Task<ActionResult> Products()
         {
-            var totalItems = _coreService.GetAllAsync();
+            var totalItems = await _coreService.GetAllAsync();
             return Ok(totalItems);
         }
 
         [HttpGet]
-        [Route("api/categories/{id}")]
-        public ActionResult GetCategoryById(int id)
+        [Route("api/products/{id}")]
+        public ActionResult GetById(int id)
         {
             var totalItems = _coreService.Get(id);
             return Ok(totalItems);
         }
 
         [HttpPost]
-        [Route("api/categories/")]
-        public ActionResult CreateCategory(Category category)
+        [Route("api/products/")]
+        public ActionResult Create(Product product)
         {
-            var res = _coreService.Insert(category);
+            var res = _coreService.Insert(product);
             return Ok(res);
         }
 
         [HttpPut]
-        [Route("api/categories/")]
-        public ActionResult UpdateCategory(Category category)
+        [Route("api/products/")]
+        public ActionResult Update(Product product)
         {
-            var res = _coreService.Update(category);
+            var res = _coreService.Update(product);
             return Ok(res);
         }
 
         [HttpDelete]
-        [Route("api/categories/{id}")]
-        public ActionResult DeleteCategory(int id)
+        [Route("api/products/{id}")]
+        public ActionResult Delete(int id)
         {
             var res = _coreService.Delete(id);
             return Ok(res);

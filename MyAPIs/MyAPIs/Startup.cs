@@ -28,8 +28,9 @@ namespace MyAPIs
         {
             services.AddDbContext<EFDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<ICoreService<User>, CoreService<User>>();
+            services.AddScoped<ICoreService<Account>, CoreService<Account>>();
             services.AddScoped<ICoreService<Category>, CoreService<Category>>();
+            services.AddScoped<ICoreService<Product>, CoreService<Product>>();
 
             services.AddMvc();
 

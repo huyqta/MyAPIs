@@ -4,9 +4,8 @@ using System.Text;
 
 namespace HQ.Entity
 {
-    public class Account
+    public class Account : BaseEntity
     {
-        public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public bool IsAdmin { get; set; }
