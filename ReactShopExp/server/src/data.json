@@ -1,0 +1,95 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Admin",
+      "password": "$2a$08$EteaH5Gn8VVwe2nO0ZAroudOwB5xODzo0EJh8DnAzq8KIeTQ9MtAq",
+      "privileges": ["user", "admin"]
+    },
+    {
+      "id": 2,
+      "username": "James",
+      "password": "$2a$08$fxU3/5BxuXm1OjgvAAZYHu6aMmRLuME5Ay7C/it4sKGApS27Fl3Du",
+      "privileges": ["user"]
+    },
+    {
+      "id": 3,
+      "username": "Katy",
+      "password": "$2a$08$VUD/0fAIlGnif.7iCtUhg.Djt8MK4g2ax9.bZpfuv2/I47xylKMx2",
+      "privileges": ["user"]
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "user_id": 2,
+      "accepted_answer_id": 1,
+      "title": "(Markdown test) Community site SPA based on ReactJS (PoC)",
+      "content": "[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/WRidder/react-spa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n[![Build Status](https://travis-ci.org/WRidder/react-spa.svg?branch=master)](https://travis-ci.org/WRidder/react-spa)\n\nA Proof of Concept real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases. Contains a simple server with in-memory database in `./server`.\n\n[**Demo on Heroku**](http://react-spa.herokuapp.com/)  \n(Automatically deployed from this repository on travis build)\n\n### Installation\n#### Just running the demo\n1. Run `$ npm install` in the ./server directory\n2. Start the server in ./server using `$ node src/server.js`. Should open a port on 8080.\n3. Navigate your browser to http://localhost:8080.\n\n#### For developers\n1. Run `$ npm install` in the base and in the ./server directory\n2. Run `$ bower install` in the base directory\n3. Start the server in ./server using `$ node src/server.js`. Should open a port on 8080.\n4. **[optional]** Install gulp globally using `npm install -g gulp`\n5. Run `$ gulp` in the base directory. This will watch for file changes and build when necessary.\n6. Navigate your browser to http://localhost:8080; will reload on client changes.\n\nTested using npm 2.1.0 and node 0.10.33\n\n### Current state\n* Discovery\n* > **Proof of concept** <\n* Refactoring\n* Stabilizing\n\n### Goal\nCreate a more advanced example (w.r.t. your average TODO app) of creating a SPA using ReactJS. Initially as a personal exercise to go *through the mud* once while hoping to share new insights gained during the process and discuss various approaches. \n\nThis will be by no means a production ready application. Objectives and goals are subject to change.\n\n#### Primary objectives\n* Find sensible approaches to using reactjs with (re)flux\n* Scalable solutions (both in size and regarding developers)\n* Isomorphic application\n* Tests (unit, integration and functional) for all essential components\n* Build methods\n* Realtime connections\n* File/folder layout\n\n#### Secondary objectives\n* Load modules on demand\n* SEO \n* Accessibility\n\n### Application design\n#### Features\n* User login and registration\n* Forum-like discussions\n* Realtime connections\n* Stackoverflow-like questions\n* Chat\n* Updates\n\n#### Roles\n* Guest\n  * Can view public pages\n  * Can login\n  * Can create account\n* User\n  * Can view restricted pages\n  * Can create questions, discussions and comments. \n  * Can delete own comments\n* Moderator\n  * Can edit/delete questions, discussions and comments from other users\n* Administrator\n  * Can access adminstrative area\n  * Can list/disable/remove users\n\n#### Layout\n**Home page**\n\n```\n+---------------------------------------------------------------------------+\n| Logo                                                 Account   Updates(5) |\n| +----------+ +-----------+ +-------------+  +-------------+ +-----------+ |\n| | Home     | | Questions | | Discussions |  | About       | | Chat      | |\n| +----------+ +-----------+ +-------------+  +-------------+ +-----------+ |\n|                                                                           |\n+---------------------------------------------------------------------------+\n|  Homepage                                                                 |\n|                                                                           |\n|                            List of updates                                |\n|                                                                           |\n+---------------------------------------------------------------------------+\n|(c) notice                                                                 |\n+---------------------------------------------------------------------------+\n```\n\n### Libraries\n* [ReactJS](https://facebook.github.io/react/)\n* [Reflux](https://github.com/spoike/refluxjs)\n* [React-router](https://github.com/rackt/react-router/)\n* [ImmutableJS](https://github.com/facebook/immutable-js)\n* [Material-ui](https://github.com/callemall/material-ui)\n* [SocketIO](http://socket.io/)\n\n### Foundations\n* [React starter kit](https://github.com/kriasoft/react-starter-kit)\n\n### Resources\n#### Blogs\n* [krawaller.se](http://blog.krawaller.se/)\n* [spoike.ghost.io](http://spoike.ghost.io/)\n\n#### Discussions\n* [Google ReactJS group](https://groups.google.com/forum/#!forum/reactjs)\n* [ReactJS subreddit](https://www.reddit.com/r/reactjs/search?q=reactjs&sort=relevance&restrict_sr=on&t=all)\n\n#### Books\n* [Developing a React.js Edge](http://shop.oreilly.com/product/9781939902122.do)\n\n### Changelog\n**[06-jan-14]** Added demo app to heroku    \n**[01-dec-14]** Improving isomorphic rendering  \n**[30-nov-14]** Isomorphic app support  \n**[24-nov-14]** Sessions (login/logout/profile); html5 puhsState; single server  \n**[22-nov-14]** Initial version\n"
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "accepted_answer_id": null,
+      "title": "What do you think of your bike?",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis ligula vitae lectus malesuada, ut scelerisque velit molestie. In eu pulvinar erat, ac porttitor augue."
+    },
+    {
+      "id": 3,
+      "user_id": 3,
+      "accepted_answer_id": null,
+      "title": "Is XKCD real?",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis ligula vitae lectus malesuada, ut scelerisque velit molestie. In eu pulvinar erat, ac porttitor augue."
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "accepted_answer_id": null,
+      "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+      "content": "Nullam tortor metus, tempor quis felis ut, auctor volutpat neque. Praesent vel rutrum urna. Donec tempus rhoncus vulputate. Aliquam erat volutpat. Quisque sit amet nulla vel arcu scelerisque egestas. Morbi scelerisque erat eget eleifend malesuada. Sed aliquam turpis sit amet sodales feugiat. Morbi at elementum purus, sed elementum nunc. Quisque consequat eleifend nulla, eget vestibulum purus dictum quis. Quisque porttitor hendrerit lorem sed euismod. Aenean nisl lectus, molestie at orci et, semper consectetur odio. Fusce in justo diam. Maecenas vitae tristique leo, a congue nibh. Etiam eget nisl nibh."
+    }
+  ],
+  "answers": [
+    {
+      "id": 1,
+      "user_id": 3,
+      "parent_id": 1,
+      "content": "Etiam sagittis dolor quis leo sollicitudin, in commodo augue varius.",
+      "votes": [1, 3]
+    },
+    {
+      "id": 2,
+      "user_id": 3,
+      "parent_id": 2,
+      "content": "Duis pellentesque rutrum arcu quis tincidunt.",
+      "votes": [1]
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "parent_id": 1,
+      "content": "Etiam sagittis dolor quis leo sollicitudin, in commodo augue varius.",
+      "votes": []
+    }
+  ],
+  "pages": [
+    {
+      "id": 1,
+      "title": "Home",
+      "Content": "Ut vestibulum ipsum quis magna finibus, eu lacinia justo suscipit. Etiam laoreet risus at lectus mattis vestibulum. Proin sed lectus bibendum massa sodales tempus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse cursus sollicitudin accumsan. Nunc lacinia eu nisi eget varius. Praesent aliquam nisi vitae est bibendum, in eleifend odio iaculis. Ut sit amet ante justo. Sed ac massa posuere, posuere sapien id, tempor mauris. Sed condimentum mattis ipsum, in porta leo rutrum ac. Duis pharetra justo quis ex ullamcorper consequat. Nullam fermentum augue elit, in feugiat mi rhoncus et. Sed aliquam, ipsum vitae vestibulum varius, nisi ligula elementum mauris, ac pellentesque libero libero sed urna. Cras sed pulvinar massa, ut lacinia nisi. Nulla facilisi."
+    },
+    {
+      "id": 2,
+      "title": "About",
+      "Content": "Aenean suscipit luctus ante. Phasellus vitae nibh eu mi faucibus volutpat. Donec a vestibulum erat. Sed euismod sapien dui, id scelerisque mauris iaculis ut. In efficitur aliquet nisi eget tincidunt. Duis ac pellentesque nisl. Aliquam hendrerit enim eu nisi tristique tincidunt. Vestibulum tellus arcu, finibus et euismod vitae, suscipit non leo. Praesent ornare velit elit, et accumsan lectus eleifend in. Donec efficitur volutpat risus, tincidunt malesuada mi blandit a. Suspendisse ac ultrices lorem, ut hendrerit elit. Donec efficitur aliquet risus eu auctor. Ut eget elit eget augue efficitur lacinia at quis tortor."
+    }
+  ],
+  "comments": [
+    {
+      "id": 3,
+      "type": "question",
+      "content": "Etiam sagittis dolor quis leo sollicitudin, in commodo augue varius.",
+      "votes": []
+    }
+  ]
+}

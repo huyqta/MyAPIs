@@ -51,6 +51,12 @@ namespace HQ.Service.Services
             return entities.SingleOrDefault(s => s.Id == id);
         }
 
+        public IEnumerable<TEntity> GetByForeignId(string foreignField, int id)
+        {
+            var query = string.Format("SELECT * FROM {0} WHERE {1} = '{2}'", typeof(TEntity).Name, foreignField, id);
+            return entities.FromSql<TEntity>(query).AsEnumerable();
+        }
+
         public IEnumerable<TEntity> GetAll()
         {
             return entities.AsEnumerable();

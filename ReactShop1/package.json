@@ -1,0 +1,9 @@
+{
+  "name": "react-shop",
+  "version": "0.0.0",
+  "description": "ReactShop",
+  "main": "server.js",
+  "author": {
+    "name": "huyqt"
+  }
+}

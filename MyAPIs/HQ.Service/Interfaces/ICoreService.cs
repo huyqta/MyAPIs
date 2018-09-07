@@ -11,6 +11,7 @@ namespace HQ.Service.Interfaces
     {
         IEnumerable<TEntity> GetAll();
         Task<IEnumerable<TEntity>> GetAllAsync();
+        IEnumerable<TEntity> GetByForeignId(string foreignField, int id);
         TEntity Get(int id);
         TEntity Insert(TEntity entity);
         TEntity Update(TEntity entity);

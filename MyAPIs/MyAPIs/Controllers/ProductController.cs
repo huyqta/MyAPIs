@@ -38,6 +38,14 @@ namespace MyAPIs.Controllers
             return Ok(totalItems);
         }
 
+        [HttpGet]
+        [Route("api/products/category/{id}")]
+        public ActionResult GetByCategoryId(int id)
+        {
+            var totalItems = _coreService.GetByForeignId("CategoryId", id);
+            return Ok(totalItems);
+        }
+
         [HttpPost]
         [Route("api/products/")]
         public ActionResult Create(Product product)

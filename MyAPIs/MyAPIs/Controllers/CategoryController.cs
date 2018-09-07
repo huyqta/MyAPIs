@@ -26,7 +26,7 @@ namespace MyAPIs.Controllers
         [Route("[action]")]
         public ActionResult Categories()
         {
-            var totalItems = _coreService.GetAllAsync();
+            var totalItems = _coreService.GetAll();
             return Ok(totalItems);
         }
 

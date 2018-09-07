@@ -1,0 +1,36 @@
+{
+  "name": "react-spa",
+  "version": "0.0.1",
+  "homepage": "https://github.com/WRidder/react-spa",
+  "authors": [
+    "Wilbert van de Ridder <wilbert.ridder@gmail.com>"
+  ],
+  "description": "Community site SPA Proof of Concept based on ReactJS",
+  "main": "client/src/app.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "reactjs",
+    "immutable-js",
+    "reflux",
+    "react-router",
+    "isomorphic"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "5.5.0",
+    "foundation-icons": "*",
+    "mdi": "~0.9.21-alpha"
+  },
+  "resolutions": {
+    "mdi": "~0.9.21-alpha"
+  }
+}

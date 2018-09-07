@@ -32,8 +32,14 @@ namespace MyAPIs
             services.AddScoped<ICoreService<Category>, CoreService<Category>>();
             services.AddScoped<ICoreService<Product>, CoreService<Product>>();
 
-            services.AddMvc();
-
+            services.AddCors();
+            services.AddMvc();            
+            services.AddMvcCore(options =>
+            {
+                options.RequireHttpsPermanent = true; // does not affect api requests
+                options.RespectBrowserAcceptHeader = true; // false by default
+                                                           //options.OutputFormatters.RemoveType<HttpNoContentOutputFormatter>();
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
@@ -50,6 +56,9 @@ namespace MyAPIs
             
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
+            app.UseCors(
+                options => options.WithOrigins("http://localhost:3000").AllowAnyMethod()
+                );
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>

@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- '0.10'
+deploy:
+  provider: heroku
+  api_key:
+    secure: GhUqyq9XeHEplRT+/nXyA+KZ8XVhkFvA2JNc5u89MFQW4sg6OncuZdUvurS9ah01GEwUmCLOXfPe4+zbR6VOWyIXu7wGLUxCFNMVVVeokP1gz5aKk7a0s56WGCLYHs//KJMleCCp8bKs7phIBtSPd9lb2mzehHfyfZ9/ZWpGmQw=
+  app: react-spa
+  on:
+    repo: WRidder/react-spa
